@@ -17,7 +17,7 @@ public class ArticleController {
     @Autowired
     private IArticleService articleService;
 
-    // 查询所有文章 (GET)
+    // 查询所有文章 (GET)  Result<T>统一使用Result<T>封装数据，统一返回JSON数据
     @GetMapping("/articles")
     //Result<String>
     public Result<List<Article>> getAllArticles() {
