@@ -15,6 +15,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    //Result<T>统一使用Result<T>封装数据，统一返回JSON数据
     @PostMapping("/register")
     public Result<String> register(@RequestBody Users user) {
         return userService.register(user);
