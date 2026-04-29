@@ -26,7 +26,7 @@ public class ArticleController {
         return Result.success(list);
     }
 
-    // 新增文章 (POST)
+    // 新增文章 (POST)  Result<T>统一使用Result<T>封装数据，统一返回JSON数据
     @PostMapping("/articles")
     public Result<Article> addArticle(@RequestBody Article article) {
         articleService.save(article);  // 调用MyBatis-Plus的save()方法保存数据
