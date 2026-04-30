@@ -11,6 +11,15 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
 
+    /**
+     * 请求预处理拦截器，验证用户身份
+     *
+     * @param request HTTP请求对象
+     * @param response HTTP响应对象
+     * @param handler 被调用的处理器对象
+     * @return 如果token有效返回true放行请求，否则返回false并返回401错误
+     * @throws Exception 处理过程中的异常
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 1. 获取 Token

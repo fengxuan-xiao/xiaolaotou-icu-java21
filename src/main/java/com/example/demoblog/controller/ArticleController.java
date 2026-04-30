@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController  // 标记为控制器，所有方法返回JSON数据
 @RequestMapping("/api")  // 统一接口前缀
-@CrossOrigin(origins = "http://localhost:5173")  // 允许前端跨域请求，端口为Vue默认开发端口
+//@CrossOrigin(origins = "http://localhost:5173")  // 允许前端跨域请求，端口为Vue默认开发端口
 public class ArticleController {
 
     @Autowired
