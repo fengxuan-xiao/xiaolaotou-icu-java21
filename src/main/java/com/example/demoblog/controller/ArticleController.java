@@ -1,6 +1,9 @@
 package com.example.demoblog.controller;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.demoblog.common.PageResult;
 import com.example.demoblog.common.Result;
 import com.example.demoblog.entity.Article;
 import com.example.demoblog.service.IArticleService;
@@ -24,6 +27,22 @@ public class ArticleController {
         List<Article> list = articleService.list();
         //return list;  // 调用MyBatis-Plus的list()方法查询所有数据
         return Result.success(list);
+    }
+
+    @GetMapping("/articlesPage")
+    public Result<PageResult<Article>> articlesPage(
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "10") Integer pageSize) {
+        IPage<Article> resultPage = articleService.getPage(page, pageSize);
+
+        PageResult<Article> pageResult = PageResult.of(
+                resultPage.getRecords(),
+                resultPage.getTotal(),
+                (int) resultPage.getCurrent(),
+                (int) resultPage.getSize()
+        );
+
+        return Result.success(pageResult);
     }
 
     // 新增文章 (POST)  Result<T>统一使用Result<T>封装数据，统一返回JSON数据
